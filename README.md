@@ -9,6 +9,7 @@ rates for various currencies. It includes features such as pagination, detailed 
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Database Setup](#database-setup)
+- [Cron Setup](#cron-setup)
 
 ## Requirements
 
@@ -52,9 +53,13 @@ rates for various currencies. It includes features such as pagination, detailed 
     ```bash
     APP_URL=http://localhost:8000
 
-## Database Setup
+## Database migrations
 
 1. **Run the migrations:**
+      ```bash
+    php artisan migrate
+
+## Cron Setup
 
   ```bash
-    php artisan migrate
+    * * * * * php /var/www/exchange-rate-service/artisan exchange:rates:update >> /dev/null 2>&1
