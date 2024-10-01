@@ -8,7 +8,7 @@ rates for various currencies. It includes features such as pagination, detailed 
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Database Setup](#database-setup)
+- [Database Migrations](#database-migrations)
 - [Cron Setup](#cron-setup)
 
 ## Requirements
