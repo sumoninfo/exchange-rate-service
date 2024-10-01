@@ -6,6 +6,7 @@ use App\Models\Currency;
 use App\Models\CurrencyHistory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class UpdateExchangeRates extends Command
 {
@@ -45,7 +46,7 @@ class UpdateExchangeRates extends Command
                 'rate' => $rate
             ]);
         }
-
+Log::info('Exchange rates updated successfully');
         $this->info('Exchange rates updated successfully!');
     }
 }

@@ -58,6 +58,10 @@
                     const tableBody = document.getElementById('currency-table');
                     tableBody.innerHTML = '';
 
+                    if(!data.data.length){
+                        return tableBody.innerHTML = '<tr><td class="fw-bold text-center" colspan="3">No Data Found</td></tr>'
+                    }
+
                     data.data.forEach(currency => {
                         tableBody.innerHTML += `<tr>
                                                     <td>${currency.name}</td>
@@ -65,7 +69,6 @@
                                                     <td><button class="btn btn-primary" onclick="showDetails(${currency.id})">Details</button></td>
                                                 </tr>`;
                     });
-
                     // Pagination links
                     const paginationLinks = document.getElementById('pagination-links');
                     paginationLinks.innerHTML = '';
