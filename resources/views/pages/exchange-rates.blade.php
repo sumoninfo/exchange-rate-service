@@ -54,11 +54,15 @@
                 headers: {'Authorization': `Bearer ${token}`}
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(({status, data}) => {
                     const tableBody = document.getElementById('currency-table');
                     tableBody.innerHTML = '';
+                    
+                    if (!status) {
+                        return alert('Something wrong')
+                    }
 
-                    if(!data.data.length){
+                    if (!data.data.length) {
                         return tableBody.innerHTML = '<tr><td class="fw-bold text-center" colspan="3">No Data Found</td></tr>'
                     }
 
@@ -97,7 +101,10 @@
                 headers: {'Authorization': `Bearer ${token}`}
             })
                 .then(response => response.json())
-                .then(data => {
+                .then(({status, data}) => {
+                    if (!status) {
+                        return alert('Something wrong')
+                    }
                     document.getElementById('currency-name').innerText = data.name;
                     document.getElementById('currency-rate').innerText = data.rate;
 

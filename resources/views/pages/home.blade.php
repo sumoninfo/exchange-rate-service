@@ -24,6 +24,18 @@
                         window.localStorage.setItem('auth_token', token);
                     }
                 })
+        } else {
+            fetch(`/api/user`, {
+                headers: {'Authorization': `Bearer ${storedToken}`}
+            })
+                .then(response => response.json())
+                .then((res) => {
+                    // all ok
+                })
+                .catch((error) => {
+                    window.localStorage.removeItem('auth_token');
+                    window.location.href = '/'
+                })
         }
     </script>
 @endsection

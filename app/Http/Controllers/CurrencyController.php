@@ -13,7 +13,12 @@ class CurrencyController extends Controller
      */
     public function index(Request $request)
     {
-        return Currency::query()->paginate($request->input('limit', 20));
+        $currencies = Currency::query()->paginate($request->input('limit', 20));
+
+        return response()->json([
+            'data' => $currencies,
+            'status' => true
+        ], 200);
     }
 
     /**
@@ -21,7 +26,10 @@ class CurrencyController extends Controller
      */
     public function show(Currency $currency)
     {
-        return $currency->with('histories');
+        return response()->json([
+            'data' => $currency->with('histories')->first(),
+            'status' => true
+        ]);
     }
 
     /**
@@ -29,7 +37,11 @@ class CurrencyController extends Controller
      */
     public function history($id)
     {
-        return CurrencyHistory::query()->where('currency_id', $id)->get();
+        $currencyHistories = CurrencyHistory::query()->where('currency_id', $id)->get();
+        return response()->json([
+            'data' => $currencyHistories,
+            'status' => true
+        ]);
     }
 
 }

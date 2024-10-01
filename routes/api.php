@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurrencyController;
 
@@ -17,8 +18,15 @@ Route::get('/fetch-token', function () {
     ]);
 });
 
-Route::middleware('auth:sanctum')->controller(CurrencyController::class)->group(function () {
-    Route::get('currencies', 'index');
-    Route::get('currencies/{currency}', 'show');
-    Route::get('currencies/{id}/history', 'history');
+Route::middleware('auth:sanctum')->group(function () {
+
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::controller(CurrencyController::class)->group(function () {
+        Route::get('currencies', 'index');
+        Route::get('currencies/{currency}', 'show');
+        Route::get('currencies/{id}/history', 'history');
+    });
 });
