@@ -57,7 +57,7 @@
                 .then(({status, data}) => {
                     const tableBody = document.getElementById('currency-table');
                     tableBody.innerHTML = '';
-                    
+
                     if (!status) {
                         return alert('Something wrong')
                     }
@@ -110,7 +110,7 @@
 
                     data.histories.forEach(history => {
                         historyTableBody.innerHTML += `<tr>
-                                                            <td>${new Date(history.created_at).toLocaleDateString()}</td>
+                                                            <td>${new Date(history.created_at).toLocaleDateString()} ${new Date(history.created_at).toLocaleTimeString()}</td>
                                                             <td>${history.rate}</td>
                                                         </tr>`;
                     });
