@@ -70,7 +70,7 @@
                         tableBody.innerHTML += `<tr>
                                                     <td>${currency.name}</td>
                                                     <td>${currency.rate}</td>
-                                                    <td><button class="btn btn-primary" onclick="showDetails(${currency.id})">Details</button></td>
+                                                    <td><button class="btn btn-primary" onclick="showDetails(${currency.id})">History</button></td>
                                                 </tr>`;
                     });
                     // Pagination links
