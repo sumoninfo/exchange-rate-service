@@ -46,7 +46,7 @@ class UpdateExchangeRates extends Command
                 'rate' => $rate
             ]);
         }
-Log::info('Exchange rates updated successfully');
+        Log::info('Exchange rates updated successfully');
         $this->info('Exchange rates updated successfully!');
     }
 }
