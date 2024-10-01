@@ -61,5 +61,9 @@ rates for various currencies. It includes features such as pagination, detailed 
 
 ## Cron Setup
 
+1. **Command add in Crontab**
   ```bash
-    * * * * * php /var/www/exchange-rate-service/artisan exchange:rates:update >> /dev/null 2>&1
+    sudo crontab -e -u www-data
+    0 * * * * php /var/www/exchange-rate-service/artisan exchange:rates:update >> /dev/null 2>&1   // every hour
+    sudo service cron status
+    sudo service cron start
