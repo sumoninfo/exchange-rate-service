@@ -33,7 +33,7 @@ class UpdateExchangeRates extends Command
         $xml = simplexml_load_string($response->body());
 
         foreach ($xml->Valute as $valute) {
-            $currencyName = (string)$valute->Name;
+            $currencyName = (string)$valute->CharCode;
             $rate = (float)str_replace(',', '.', $valute->Value);
 
             $currency = Currency::updateOrCreate(
